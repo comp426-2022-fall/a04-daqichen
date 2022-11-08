@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import minimist from 'minimist';
-import express, { Router, urlencoded } from "express";
+import express, { Router, urlencoded, json } from "express";
 import { roll } from './lib/roll.js';
 
 const args = minimist(process.argv.slice(2));
@@ -9,6 +9,7 @@ const port = args.port? args.port:5000;
 const app = express();
 const router = Router();
 app.use(urlencoded());
+app.use(json());
 
 router.get('/', function (req, res) {
     res.send('200 OK');
