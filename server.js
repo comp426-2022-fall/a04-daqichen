@@ -4,7 +4,6 @@ import express, { Router, urlencoded } from "express";
 import { roll } from './lib/roll.js';
 
 const args = minimist(process.argv.slice(2));
-console.log(args)
 const port = args.port? args.port:5000;
 
 const app = express();
@@ -20,7 +19,6 @@ router.get('/roll', function (req, res) {
   })
 
 router.post('/roll', function (req, res) {
-    console.log('Got body:', req.body);
     const sides = req.body.sides? req.body.sides:6;
     const dice = req.body.dice? req.body.dice:2;
     const rolls = req.body.rolls? req.body.rolls:1;
@@ -53,4 +51,3 @@ app.use(function (req, res) {
 })
 
 app.listen(port)
-console.log('Server listening on port ' + port);
